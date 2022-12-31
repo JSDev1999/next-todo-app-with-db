@@ -8,6 +8,14 @@ const nextConfig = {
       "mongodb+srv://ramesh:ramesh@cluster0.gr728o1.mongodb.net/todo-app-db?retryWrites=true&w=majority",
     API_URL: "https://next-todo-app-with-db.vercel.app/",
   },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "https://next-todo-app-with-db.vercel.app/",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
