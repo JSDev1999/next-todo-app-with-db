@@ -23,10 +23,12 @@ export default async (req, res) => {
 
   if (method === "GET") {
     try {
-      const tasks = await Task.find();
+      const tasks = await TaskModel.find();
       res.status(200).json({ data: tasks });
     } catch (error) {
-      res.status(500).json({ message: "Internal Server Error" });
+      res
+        .status(500)
+        .json({ message: error?.message || "Internal Server Error" });
       console.log(error);
     }
   }
